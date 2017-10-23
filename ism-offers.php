@@ -12,6 +12,8 @@ License: MIT
 // https://code.jquery.com/ui/1.12.1/jquery-ui.min.js
 
 require_once "includes/ism-post-types-functions.php";
+require_once "includes/ism-offers-loop-functions.php";
+require_once "includes/ism-shortcodes-functions.php";
 require_once "includes/ism-enqueue-functions.php";
 require_once "includes/ism-hooks.php";
 require_once "includes/ism-post-metaboxes-functions.php";
