@@ -8,8 +8,11 @@
 
 add_shortcode('ism_offers', 'ism_shortcode_offers');
 
-function ism_shortcode_offers($atts = [], $content = "")
+function ism_shortcode_offers($atts, $content = "")
 {
+    if(!is_array($atts)){
+        $atts = [];
+    }
 
     $defaultAtts = [
         'offset'         => 0,
