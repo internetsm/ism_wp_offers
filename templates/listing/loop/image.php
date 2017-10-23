@@ -1,0 +1,1 @@
+<img class="offer-image" src="<?php echo $offer['image']; ?>"/>
