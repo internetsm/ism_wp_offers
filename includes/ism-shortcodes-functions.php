@@ -79,7 +79,7 @@ function ism_shortcode_offers($atts = [], $content = "")
  */
 function ism_shortcode_offers_loop_image()
 {
-
+    ism_get_template('listing/loop/image');
 }
 
 /**
@@ -87,9 +87,7 @@ function ism_shortcode_offers_loop_image()
  */
 function ism_shortcode_offers_loop_title()
 {
-    ism_get_template('listing/offers', [
-        'offers' => $offers
-    ]);
+    ism_get_template('listing/loop/title');
 }
 
 /**
@@ -97,5 +95,5 @@ function ism_shortcode_offers_loop_title()
  */
 function ism_shortcode_offers_loop_description()
 {
-
+    ism_get_template('listing/loop/description');
 }

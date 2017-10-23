@@ -1,3 +1,1 @@
-<h2 class="offer-title">
-    <?php echo $offer['title']; ?>
-</h2>
+<h2 class="offer-title"><?php echo $offer['title']; ?></h2>
