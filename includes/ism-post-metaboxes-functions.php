@@ -6,7 +6,6 @@
  * Time: 15.38
  */
 
-add_action('add_meta_boxes', 'ism_offers_metabox');
 
 function ism_offers_metabox_save()
 {
@@ -44,6 +43,8 @@ function ism_offers_metabox()
     add_meta_box('ism_offers_metabox', 'Campi offerta', 'ism_offers_metabox_template', 'ism_offers', 'side', 'default');
 }
 
+add_action('add_meta_boxes', 'ism_offers_metabox');
+
 /**
  *
  */
@@ -55,53 +56,17 @@ function ism_offers_metabox_template()
     $ism_offers_price_type = get_post_meta($post->ID, 'ism_offers_price_type', true);
     $ism_offers_treatment = get_post_meta($post->ID, 'ism_offers_treatment', true);
     $ism_offers_date_arrival = get_post_meta($post->ID, 'ism_offers_date_arrival', true);
+    $ism_offers_date_arrival = apply_filters("ism_offers_print_date", $ism_offers_date_arrival);
     $ism_offers_date_departure = get_post_meta($post->ID, 'ism_offers_date_departure', true);
+    $ism_offers_date_departure = apply_filters("ism_offers_print_date", $ism_offers_date_departure);
 
     echo ism_get_template("metabox/metabox", [
-        'ism_offers_price'          => $ism_offers_price,
-        'ism_offers_price_type'     => $ism_offers_price_type,
-        'ism_offers_treatment'      => $ism_offers_treatment,
-        'ism_offers_date_arrival'   => $ism_offers_date_arrival,
-        'ism_offers_date_departure' => $ism_offers_date_departure,
+        'ism_offer_data' => [
+            'price' => $ism_offers_price,
+            'price_type' => $ism_offers_price_type,
+            'treatment' => $ism_offers_treatment,
+            'date_arrival' => $ism_offers_date_arrival,
+            'date_departure' => $ism_offers_date_departure,
+        ]
     ]);
-}
-
-/**
- * Template for price metabox
- */
-function ism_offers_metabox_template_price()
-{
-    echo ism_get_template("metabox/fields/price");
-}
-
-/**
- * Template for price type metabox
- */
-function ism_offers_metabox_template_price_type()
-{
-    echo ism_get_template("metabox/fields/price-type");
-}
-
-/**
- * Template for treatment metabox
- */
-function ism_offers_metabox_template_treatment()
-{
-    echo ism_get_template("metabox/fields/treatment");
-}
-
-/**
- * Template for date arrival metabox
- */
-function ism_offers_metabox_template_date_arrival()
-{
-    echo ism_get_template("metabox/fields/date-arrival");
-}
-
-/**
- * Template for date departure metabox
- */
-function ism_offers_metabox_template_date_departure()
-{
-    echo ism_get_template("metabox/fields/date-departure");
 }

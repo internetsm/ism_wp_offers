@@ -17,6 +17,7 @@ require_once "includes/ism-shortcodes-functions.php";
 require_once "includes/ism-enqueue-functions.php";
 require_once "includes/ism-hooks.php";
 require_once "includes/ism-post-metaboxes-functions.php";
+require_once "includes/ism-offers-loop-functions.php";
 
 if (!function_exists("ism_get_template")) {
 
