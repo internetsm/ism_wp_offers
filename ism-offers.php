@@ -20,6 +20,7 @@ require_once "includes/ism-hooks.php";
 require_once "includes/ism-post-metaboxes-functions.php";
 require_once "includes/ism-offers-loop-functions.php";
 require_once "includes/ism-columns-functions.php";
+require_once "includes/ism-visual-composer-functions.php";
 
 if (!function_exists("ism_get_template")) {
 

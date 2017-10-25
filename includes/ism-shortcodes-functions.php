@@ -15,14 +15,19 @@ function ism_shortcode_offers($atts, $content = "")
     }
 
     $defaultAtts = [
-        'offset'            => 0,
-        'limit'             => -1,
-        'order_by'          => 'meta_value',
-        'order'             => 'DESC',
-        'is_carousel'       => false,
-        'thumbnail_size'    => 'medium',
-        'category'          => null,
-        'category_relation' => 'AND',
+        'offset'                  => 0,
+        'limit'                   => -1,
+        'order_by'                => 'meta_value',
+        'order'                   => 'DESC',
+        'is_carousel'             => false,
+        'thumbnail_size'          => 'medium',
+        'category'                => null,
+        'category_relation'       => 'AND',
+        'carousel_columns'        => 3,
+        'carousel_scroll_columns' => 1,
+        'carousel_autoplay'       => true,
+        'carousel_dots'           => true,
+        'carousel_arrows'         => true,
     ];
 
     $atts = array_merge($defaultAtts, $atts);
@@ -102,7 +107,18 @@ function ism_shortcode_offers($atts, $content = "")
         $offers[] = $offer;
     }
 
-    ism_get_template('listing/offers', [
-        'offers' => $offers
-    ]);
+    if (!$atts['is_carousel']) {
+        return ism_get_template('listing/offers', [
+            'offers' => $offers
+        ]);
+    } else {
+        return ism_get_template('carousel/offers', [
+            'offers'   => $offers,
+            'carousel' => [
+                'autoplay'       => $atts['carousel_autoplay'],
+                'columns'        => $atts['carousel_columns'],
+                'scroll_columns' => $atts['carousel_scroll_columns'],
+            ]
+        ]);
+    }
 }
