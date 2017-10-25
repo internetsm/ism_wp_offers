@@ -66,7 +66,7 @@ function ism_offers_vc_shortcode($shortcodes)
                 'type'        => 'checkbox',
                 'heading'     => 'Carosello',
                 'param_name'  => 'is_carousel',
-                'value'       => -1,
+                'value'       => 1,
                 'description' => 'Carosello o listing normale'
             ],
             [
@@ -106,11 +106,9 @@ function ism_offers_vc_shortcode($shortcodes)
                 'heading'     => 'Autoplay carosello',
                 'param_name'  => 'carousel_autoplay',
                 'description' => '',
+                'value'       => 1,
                 'dependency' => [
                     'element' => 'is_carousel',
-                    'value' => [
-                        1
-                    ],
                     'not_empty' => true,
                 ]
             ],
@@ -119,11 +117,9 @@ function ism_offers_vc_shortcode($shortcodes)
                 'heading'     => 'Pallini carosello',
                 'param_name'  => 'carousel_dots',
                 'description' => '',
+                'value'       => 1,
                 'dependency' => [
                     'element' => 'is_carousel',
-                    'value' => [
-                        1
-                    ],
                     'not_empty' => true,
                 ]
             ],
@@ -132,11 +128,9 @@ function ism_offers_vc_shortcode($shortcodes)
                 'heading'     => 'Freccie carosello',
                 'param_name'  => 'carousel_arrows',
                 'description' => '',
+                'value'       => 1,
                 'dependency' => [
                     'element' => 'is_carousel',
-                    'value' => [
-                        1
-                    ],
                     'not_empty' => true,
                 ]
             ],

@@ -115,9 +115,11 @@ function ism_shortcode_offers($atts, $content = "")
         return ism_get_template('carousel/offers', [
             'offers'   => $offers,
             'carousel' => [
-                'autoplay'       => $atts['carousel_autoplay'],
-                'columns'        => $atts['carousel_columns'],
+                'autoplay' => $atts['carousel_autoplay'],
+                'columns'  => $atts['carousel_columns'],
                 'scroll_columns' => $atts['carousel_scroll_columns'],
+                'dots'     => $atts['carousel_dots'],
+                'arrows'   => $atts['carousel_arrows'],
             ]
         ]);
     }

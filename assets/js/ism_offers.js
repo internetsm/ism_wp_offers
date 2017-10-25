@@ -25,7 +25,24 @@ ism.initCarousels = function () {
             slidesToScroll: scroll_columns,
             arrows: arrows,
             dots: dots,
-            autoplay: autoplay
+            autoplay: autoplay,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+
         });
     });
 };
