@@ -11,16 +11,9 @@ foreach ($offers as $offer){
     ?>
 
     <div class="offer">
-
-        <?php
-        /**
-         * @hooked ism_shortcode_offers_loop_image 10
-         * @hooked ism_shortcode_offers_loop_title 20
-         * @hooked ism_shortcode_offers_loop_description 30
-         */
-        do_action("ism_offers_loop");
-        ?>
-
+        <img class="offer-image" src="<?php echo $offer['image']; ?>"/>
+        <h2 class="offer-title"><?php echo $offer['title']; ?></h2>
+        <div class="offer-content"><?php echo substr($offer['description'], 0, 100); ?></div>
     </div>
 
     <?php

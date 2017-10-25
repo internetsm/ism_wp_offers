@@ -10,35 +10,65 @@ add_shortcode('ism_offers', 'ism_shortcode_offers');
 
 function ism_shortcode_offers($atts, $content = "")
 {
-    if(!is_array($atts)){
+    if (!is_array($atts)) {
         $atts = [];
     }
 
     $defaultAtts = [
-        'offset'         => 0,
-        'limit'          => -1,
-        'order_by'       => 'meta_value',
-        'order'          => 'DESC',
-        'is_carousel'    => false,
-        'thumbnail_size' => 'medium',
+        'offset'            => 0,
+        'limit'             => -1,
+        'order_by'          => 'meta_value',
+        'order'             => 'DESC',
+        'is_carousel'       => false,
+        'thumbnail_size'    => 'medium',
+        'category'          => null,
+        'category_relation' => 'AND',
     ];
 
     $atts = array_merge($defaultAtts, $atts);
 
-    $query = new Wp_Query([
+    $queryArguments = [
         'posts_per_page' => $atts['limit'],
-        'orderby'        => $atts['order_by'],
-        'order'          => $atts['order'],
+//        'orderby'        => $atts['order_by'],
+//        'order'          => $atts['order'],
         'offset'         => $atts['offset'],
+        'post_type'      => 'ism_offer',
         'meta_query'     => array(
             array(
                 'key'     => 'ism_offers_date_departure',
                 'value'   => strtotime("now"),
                 'compare' => '>=',
-                'type'    => 'DATE'
+                'type'    => 'NUMERIC'
             )
         ),
-    ]);
+    ];
+
+    if (!is_null($atts['category'])) {
+
+        $taxQuery = [
+            'relation' => $atts['category_relation'],
+        ];
+
+        if (!is_array($atts['category'])) {
+            $atts['category'] = [
+                $atts['category']
+            ];
+        }
+
+        foreach ($atts['category'] as $categoryValue) {
+            $taxQuery[] = [
+                'taxonomy' => 'ism_offers_category',
+                'field'    => is_int($categoryValue) ? 'id' : 'slug',
+                'terms'    => [
+                    $categoryValue
+                ],
+                'operator' => 'IN'
+            ];
+        }
+        $queryArguments['tax_query'] = $taxQuery;
+    }
+
+    $query = new Wp_Query($queryArguments);
 
     $posts = $query->get_posts();
 

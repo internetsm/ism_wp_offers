@@ -24,6 +24,7 @@ function ism_offers_columns($columns)
         'ism_offers_treatment'      => "Trattamento",
         'ism_offers_date_arrival'   => "Data arrivo",
         'ism_offers_date_departure' => "Data partenza",
+        'ism_offers_categories'     => "Categorie",
         'ism_offers_thumbnail'      => "Immagine",
     );
     unset($columns['author']);
@@ -39,17 +40,21 @@ function ism_offers_manage_columns($column, $post_id)
 {
 
     $translations = [
-        "price_night" => "Prezzo per notte",
-        "price_flat" => "Prezzo forfettario",
-        "all_inclusive" => "All Inclusive",
-        "fullboard" => "Pensione completa",
-        "halfboard" => "Mezza pensione",
+        "price_night"       => "Prezzo per notte",
+        "price_flat"        => "Prezzo forfettario",
+        "all_inclusive"     => "All Inclusive",
+        "fullboard"         => "Pensione completa",
+        "halfboard"         => "Mezza pensione",
         "bed_and_breakfast" => "Bed & Breakfast",
     ];
 
     $dateDeparture = get_post_meta($post_id, 'ism_offers_date_departure', true);
     $valid = ($dateDeparture >= strtotime("now"));
     $color = ($valid ? "green" : "red");
+
+    $categories = array_map(function ($term){
+        return $term->name;
+    }, wp_get_post_terms($post_id, 'ism_offers_category'));
 
     $data = [
         'ism_offers_price'          => sprintf("%s €", get_post_meta($post_id, 'ism_offers_price', true)),
@@ -60,6 +65,7 @@ function ism_offers_manage_columns($column, $post_id)
             $color,
             apply_filters("ism_offers_print_date", $dateDeparture)
         ),
+        'ism_offers_categories'     => implode(", ", $categories),
         'ism_offers_thumbnail'      => sprintf("<img src='%s'/>", get_the_post_thumbnail_url($post_id, 'thumbnail')),
     ];
 
