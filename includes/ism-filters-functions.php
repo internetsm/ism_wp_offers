@@ -16,9 +16,11 @@ add_filter('ism_offers_save_metabox_value', function ($value, $field){
             break;
     }
     return $value;
-});
+}, 10, 2);
 
 add_filter('ism_offers_print_date', function ($value){
-    $value = date("d-m-Y", $value);
+    if(!empty($value)) {
+        $value = date("d-m-Y", $value);
+    }
     return $value;
-});
+}, 10, 1);

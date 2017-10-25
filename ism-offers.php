@@ -13,11 +13,13 @@ License: MIT
 
 require_once "includes/ism-filters-functions.php";
 require_once "includes/ism-post-types-functions.php";
+require_once "includes/ism-taxonomies-functions.php";
 require_once "includes/ism-shortcodes-functions.php";
 require_once "includes/ism-enqueue-functions.php";
 require_once "includes/ism-hooks.php";
 require_once "includes/ism-post-metaboxes-functions.php";
 require_once "includes/ism-offers-loop-functions.php";
+require_once "includes/ism-columns-functions.php";
 
 if (!function_exists("ism_get_template")) {
 

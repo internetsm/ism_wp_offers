@@ -47,5 +47,5 @@ function ism_offers_custom_post_type_declaration()
         'menu_position'      => null,
         'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
     );
-    register_post_type('ism_offers', $args);
+    register_post_type('ism_offer', $args);
 }

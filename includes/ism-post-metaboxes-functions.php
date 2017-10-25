@@ -40,7 +40,7 @@ add_action('save_post', 'ism_offers_metabox_save');
  */
 function ism_offers_metabox()
 {
-    add_meta_box('ism_offers_metabox', 'Campi offerta', 'ism_offers_metabox_template', 'ism_offers', 'side', 'default');
+    add_meta_box('ism_offers_metabox', 'Campi offerta', 'ism_offers_metabox_template', 'ism_offer', 'side', 'default');
 }
 
 add_action('add_meta_boxes', 'ism_offers_metabox');

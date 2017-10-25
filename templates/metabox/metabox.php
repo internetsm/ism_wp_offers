@@ -50,7 +50,7 @@
         <label><strong>Data arrivo</strong></label>
     </div>
     <div>
-        <input value="<?php echo $ism_offer_data['date_arrival']; ?>" class="datepicker" id="datepicker-arrival"
+        <input required="required" value="<?php echo $ism_offer_data['date_arrival']; ?>" class="datepicker" id="datepicker-arrival"
                type="text"
                name="ism_offers_date_arrival"/>
     </div>
@@ -61,7 +61,7 @@
         <label><strong>Data partenza</strong></label>
     </div>
     <div>
-        <input value="<?php echo $ism_offer_data['date_departure']; ?>" id="datepicker-departure" class="datepicker"
+        <input required="required" value="<?php echo $ism_offer_data['date_departure']; ?>" id="datepicker-departure" class="datepicker"
                type="text" name="ism_offers_date_departure"/>
     </div>
 </div>
