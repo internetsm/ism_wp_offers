@@ -79,9 +79,6 @@ function ism_offers_vc_shortcode($shortcodes)
                 'description' => '',
                 'dependency' => [
                     'element' => 'is_carousel',
-                    'value' => [
-                        1
-                    ],
                     'not_empty' => true,
                 ]
             ],
@@ -95,9 +92,6 @@ function ism_offers_vc_shortcode($shortcodes)
                 'description' => '',
                 'dependency' => [
                     'element' => 'is_carousel',
-                    'value' => [
-                        1
-                    ],
                     'not_empty' => true,
                 ]
             ],

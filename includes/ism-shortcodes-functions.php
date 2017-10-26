@@ -21,6 +21,7 @@ function ism_shortcode_offers($atts, $content = "")
         'order'                   => 'DESC',
         'is_carousel'             => false,
         'thumbnail_size'          => 'medium',
+        'has_button'              => true,
         'category'                => null,
         'category_relation'       => 'AND',
         'carousel_columns'        => 3,
@@ -28,6 +29,7 @@ function ism_shortcode_offers($atts, $content = "")
         'carousel_autoplay'       => true,
         'carousel_dots'           => true,
         'carousel_arrows'         => true,
+        'carousel_infinite'       => true,
     ];
 
     $atts = array_merge($defaultAtts, $atts);
@@ -115,11 +117,12 @@ function ism_shortcode_offers($atts, $content = "")
         return ism_get_template('carousel/offers', [
             'offers'   => $offers,
             'carousel' => [
-                'autoplay' => $atts['carousel_autoplay'],
-                'columns'  => $atts['carousel_columns'],
+                'autoplay'       => $atts['carousel_autoplay'],
+                'columns'        => $atts['carousel_columns'],
                 'scroll_columns' => $atts['carousel_scroll_columns'],
-                'dots'     => $atts['carousel_dots'],
-                'arrows'   => $atts['carousel_arrows'],
+                'dots'           => $atts['carousel_dots'],
+                'arrows'         => $atts['carousel_arrows'],
+                'infinite'       => $atts['carousel_infinite'],
             ]
         ]);
     }

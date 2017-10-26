@@ -15,6 +15,7 @@
         <img class="offer-image" src="<?php echo $offer['image']; ?>"/>
         <h2 class="offer-title"><?php echo $offer['title']; ?></h2>
         <div class="offer-content"><?php echo substr($offer['description'], 0, 100); ?></div>
+        <button></button>
     </li>
     <?php
 } ?>
