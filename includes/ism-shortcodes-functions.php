@@ -93,6 +93,8 @@ function ism_shortcode_offers($atts, $content = "")
 
         $departureDate = get_post_meta($post->ID, 'ism_offers_date_departure', true);
 
+        $url = get_permalink($post->ID);
+
         $image = get_the_post_thumbnail_url($post->ID, $atts['thumbnail_size']);
 
         $offer = [
@@ -104,6 +106,7 @@ function ism_shortcode_offers($atts, $content = "")
             'arrival_date'   => $arrivalDate,
             'departure_date' => $departureDate,
             'image'          => $image,
+            'url'            => $url,
         ];
 
         $offers[] = $offer;
