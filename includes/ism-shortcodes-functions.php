@@ -113,11 +113,11 @@ function ism_shortcode_offers($atts, $content = "")
     }
 
     if (!$atts['is_carousel']) {
-        return ism_get_template('listing/offers', [
+        return ism_offers_get_template('listing/offers', [
             'offers' => $offers
         ]);
     } else {
-        return ism_get_template('carousel/offers', [
+        return ism_offers_get_template('carousel/offers', [
             'offers'   => $offers,
             'carousel' => [
                 'autoplay'       => $atts['carousel_autoplay'],

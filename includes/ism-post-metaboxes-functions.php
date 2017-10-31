@@ -60,7 +60,7 @@ function ism_offers_metabox_template()
     $ism_offers_date_departure = get_post_meta($post->ID, 'ism_offers_date_departure', true);
     $ism_offers_date_departure = apply_filters("ism_offers_print_date", $ism_offers_date_departure);
 
-    echo ism_get_template("metabox/metabox", [
+    echo ism_offers_get_template("metabox/metabox", [
         'ism_offer_data' => [
             'price' => $ism_offers_price,
             'price_type' => $ism_offers_price_type,
