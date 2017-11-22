@@ -24,3 +24,16 @@ add_filter('ism_offers_print_date', function ($value){
     }
     return $value;
 }, 10, 1);
+
+add_filter('ism_offers_translate_treatment', function ($value) {
+
+    $slugs = [
+        "all_inclusive" => __('All inclusive', 'ism_offers'),
+        "fullboard" => __('Full Board', 'ism_offers'),
+        "halfboard" => __('Half Board', 'ism_offers'),
+        "bed_and_breakfast" => __('Bed and Breakfast', 'ism_offers'),
+    ];
+
+    return $slugs[$value];
+
+});
