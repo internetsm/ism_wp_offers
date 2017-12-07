@@ -27,6 +27,13 @@ function ism_offers_vc_shortcode($shortcodes)
         'params'      => [
             [
                 'type'        => 'textfield',
+                'heading'     => 'Tema',
+                'param_name'  => 'theme',
+                'value'       => 0,
+                'description' => 'Tema del template (il nome del template avrà il suffisso "-nome_tema"'
+            ],
+            [
+                'type'        => 'textfield',
                 'heading'     => 'Offset',
                 'param_name'  => 'offset',
                 'value'       => 0,

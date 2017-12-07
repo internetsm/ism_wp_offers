@@ -15,6 +15,7 @@ function ism_shortcode_offers($atts, $content = "")
     }
 
     $defaultAtts = [
+        'theme'                   => "",
         'offset'                  => 0,
         'limit'                   => -1,
         'order_by'                => 'meta_value',
@@ -113,11 +114,11 @@ function ism_shortcode_offers($atts, $content = "")
     }
 
     if (!$atts['is_carousel']) {
-        return ism_offers_get_template('listing/offers', [
+        return ism_offers_get_template('listing/offers' . !empty($defaultAtts['theme']) ? "-" . $defaultAtts['theme'] : "", [
             'offers' => $offers
         ]);
     } else {
-        return ism_offers_get_template('carousel/offers', [
+        return ism_offers_get_template('carousel/offers' . !empty($defaultAtts['theme']) ? "-" . $defaultAtts['theme'] : "", [
             'offers'   => $offers,
             'carousel' => [
                 'autoplay'       => $atts['carousel_autoplay'],
