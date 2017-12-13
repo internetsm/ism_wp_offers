@@ -20,6 +20,7 @@ function ism_shortcode_offers($atts, $content = "")
         'limit'                   => -1,
         'order_by'                => 'meta_value',
         'order'                   => 'DESC',
+        'month'                   => null,
         'is_carousel'             => false,
         'thumbnail_size'          => 'medium',
         'has_button'              => true,

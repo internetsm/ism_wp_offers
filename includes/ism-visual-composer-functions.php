@@ -70,6 +70,26 @@ function ism_offers_vc_shortcode($shortcodes)
                 'description' => ''
             ],
             [
+                'type'        => 'dropdown',
+                'heading'     => 'Mese',
+                'param_name'  => 'month',
+                'value'       => [
+                    '1'  => 'Gennaio',
+                    '2'  => 'Febbraio',
+                    '3'  => 'Marzo',
+                    '4'  => 'Aprile',
+                    '5'  => 'Maggio',
+                    '6'  => 'Giugno',
+                    '7'  => 'Luglio',
+                    '8'  => 'Agosto',
+                    '9'  => 'Settembre',
+                    '10' => 'Ottobre',
+                    '11' => 'Nobembre',
+                    '12' => 'Dicembre',
+                ],
+                'description' => ''
+            ],
+            [
                 'type'        => 'checkbox',
                 'heading'     => 'Carosello',
                 'param_name'  => 'is_carousel',
@@ -84,8 +104,8 @@ function ism_offers_vc_shortcode($shortcodes)
                     1, 2, 3, 4
                 ],
                 'description' => '',
-                'dependency' => [
-                    'element' => 'is_carousel',
+                'dependency'  => [
+                    'element'   => 'is_carousel',
                     'not_empty' => true,
                 ]
             ],
@@ -97,8 +117,8 @@ function ism_offers_vc_shortcode($shortcodes)
                     1, 2, 3, 4
                 ],
                 'description' => '',
-                'dependency' => [
-                    'element' => 'is_carousel',
+                'dependency'  => [
+                    'element'   => 'is_carousel',
                     'not_empty' => true,
                 ]
             ],
@@ -108,8 +128,8 @@ function ism_offers_vc_shortcode($shortcodes)
                 'param_name'  => 'carousel_autoplay',
                 'description' => '',
                 'value'       => 1,
-                'dependency' => [
-                    'element' => 'is_carousel',
+                'dependency'  => [
+                    'element'   => 'is_carousel',
                     'not_empty' => true,
                 ]
             ],
@@ -119,8 +139,8 @@ function ism_offers_vc_shortcode($shortcodes)
                 'param_name'  => 'carousel_dots',
                 'description' => '',
                 'value'       => 1,
-                'dependency' => [
-                    'element' => 'is_carousel',
+                'dependency'  => [
+                    'element'   => 'is_carousel',
                     'not_empty' => true,
                 ]
             ],
@@ -130,8 +150,8 @@ function ism_offers_vc_shortcode($shortcodes)
                 'param_name'  => 'carousel_arrows',
                 'description' => '',
                 'value'       => 1,
-                'dependency' => [
-                    'element' => 'is_carousel',
+                'dependency'  => [
+                    'element'   => 'is_carousel',
                     'not_empty' => true,
                 ]
             ],
