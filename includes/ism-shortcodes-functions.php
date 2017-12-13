@@ -20,7 +20,7 @@ function ism_shortcode_offers($atts, $content = "")
         'limit'                   => -1,
         'order_by'                => 'meta_value',
         'order'                   => 'DESC',
-        'month'                   => null,
+        'month'                   => "",
         'is_carousel'             => false,
         'thumbnail_size'          => 'medium',
         'has_button'              => true,
@@ -42,15 +42,80 @@ function ism_shortcode_offers($atts, $content = "")
 //        'order'          => $atts['order'],
         'offset'         => $atts['offset'],
         'post_type'      => 'ism_offer',
-        'meta_query'     => array(
-            array(
-                'key'     => 'ism_offers_date_departure',
-                'value'   => strtotime("now"),
-                'compare' => '>=',
-                'type'    => 'NUMERIC'
-            )
-        ),
+
     ];
+
+    $metaQuery = [
+        'OR',
+        [
+            'key'     => 'ism_offers_date_departure',
+            'value'   => strtotime("now"),
+            'compare' => '>=',
+            'type'    => 'NUMERIC'
+        ]
+    ];
+
+    if (!empty($atts['month'])) {
+
+        $months = [
+            'Gennaio'   => 1,
+            'Febbraio'  => 2,
+            'Marzo'     => 3,
+            'Aprile'    => 4,
+            'Maggio'    => 5,
+            'Giugno'    => 6,
+            'Luglio'    => 7,
+            'Agosto'    => 8,
+            'Settembre' => 9,
+            'Ottobre'   => 10,
+            'Novembre'  => 11,
+            'Dicembre'  => 12,
+        ];
+
+        $month = $months[$atts['month']];
+
+        $currentMonth = intval((new \DateTime())->format('m'));
+
+        $currentYear = intval((new \DateTime())->format('Y'));
+
+        $nextYearDate = new \DateTime();
+
+        $nextYearDate->modify('+1 year');
+
+        $nextYear = intval($nextYearDate->format('Y'));
+
+        $year = $month < $currentMonth ? $nextYear : $currentYear;
+
+        $dateString = sprintf('%s-%s-%s %s:%s:%s',
+            '00',
+            strlen($month) > 1 ? $month : '0' . $month,
+            $year,
+            '00',
+            '00',
+            '00'
+        );
+
+        $startDateTime = \DateTime::createFromFormat('d-m-Y H:i:s', $dateString);
+
+        $endDateTime = \DateTime::createFromFormat('d-m-Y H:i:s', $dateString);
+
+        $endDateTime->modify('+1 month');
+
+        $metaQuery[] = [
+            'key'     => 'ism_offers_date_departure',
+            'value'   => $startDateTime->getTimestamp(),
+            'compare' => '>=',
+            'type'    => 'NUMERIC'
+        ];
+
+        $metaQuery[] = [
+            'key'     => 'ism_offers_date_arrival',
+            'value'   => $endDateTime->getTimestamp(),
+            'compare' => '<',
+            'type'    => 'NUMERIC'
+        ];
+
+    }
 
     if (!is_null($atts['category'])) {
 
@@ -76,6 +141,8 @@ function ism_shortcode_offers($atts, $content = "")
         }
         $queryArguments['tax_query'] = $taxQuery;
     }
+
+    $queryArguments['meta_query'] = $metaQuery;
 
     $query = new Wp_Query($queryArguments);
 
