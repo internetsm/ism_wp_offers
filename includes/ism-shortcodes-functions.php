@@ -46,7 +46,7 @@ function ism_shortcode_offers($atts, $content = "")
     ];
 
     $metaQuery = [
-        'OR',
+        'AND',
         [
             'key'     => 'ism_offers_date_departure',
             'value'   => strtotime("now"),
@@ -101,19 +101,23 @@ function ism_shortcode_offers($atts, $content = "")
 
         $endDateTime->modify('+1 month');
 
-        $metaQuery[] = [
-            'key'     => 'ism_offers_date_departure',
-            'value'   => $startDateTime->getTimestamp(),
-            'compare' => '>=',
-            'type'    => 'NUMERIC'
+        $tempMetaQuery = [
+            'OR',
+            [
+                'key'     => 'ism_offers_date_departure',
+                'value'   => $startDateTime->getTimestamp(),
+                'compare' => '>=',
+                'type'    => 'NUMERIC'
+            ],
+            [
+                'key'     => 'ism_offers_date_arrival',
+                'value'   => $endDateTime->getTimestamp(),
+                'compare' => '<',
+                'type'    => 'NUMERIC'
+            ]
         ];
 
-        $metaQuery[] = [
-            'key'     => 'ism_offers_date_arrival',
-            'value'   => $endDateTime->getTimestamp(),
-            'compare' => '<',
-            'type'    => 'NUMERIC'
-        ];
+        $metaQuery[] = $tempMetaQuery;
 
     }
 
