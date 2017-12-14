@@ -48,27 +48,65 @@ function ism_offers_manage_columns($column, $post_id)
         "bed_and_breakfast" => "Bed & Breakfast",
     ];
 
-    $dateDeparture = get_post_meta($post_id, 'ism_offers_date_departure', true);
-    $valid = ($dateDeparture >= strtotime("now"));
-    $color = ($valid ? "green" : "red");
+    switch ($column){
 
-    $categories = array_map(function ($term){
-        return $term->name;
-    }, wp_get_post_terms($post_id, 'ism_offers_category'));
+        case 'ism_offers_price':
 
-    $data = [
-        'ism_offers_price'          => sprintf("%s €", get_post_meta($post_id, 'ism_offers_price', true)),
-        'ism_offers_price_type'     => $translations[get_post_meta($post_id, 'ism_offers_price_type', true)],
-        'ism_offers_treatment'      => $translations[get_post_meta($post_id, 'ism_offers_treatment', true)],
-        'ism_offers_date_arrival'   => apply_filters("ism_offers_print_date", get_post_meta($post_id, 'ism_offers_date_arrival', true)),
-        'ism_offers_date_departure' => sprintf("<span style='color: %s;'>%s</span>",
-            $color,
-            apply_filters("ism_offers_print_date", $dateDeparture)
-        ),
-        'ism_offers_categories'     => implode(", ", $categories),
-        'ism_offers_thumbnail'      => sprintf("<img src='%s'/>", get_the_post_thumbnail_url($post_id, 'thumbnail')),
-    ];
+            printf("%s €", get_post_meta($post_id, 'ism_offers_price', true));
+            break;
+        case 'ism_offers_price_type':
 
-    echo $data[$column];
+            $priceType = get_post_meta($post_id, 'ism_offers_price_type', true);
 
+            $priceType = isset($translations[$priceType]) ? $translations[$priceType] : $priceType;
+
+            echo $priceType;
+            break;
+
+        case 'ism_offers_treatment':
+
+            $treatment = get_post_meta($post_id, 'ism_offers_treatment', true);
+
+            $treatment = isset($translations[$treatment]) ? $translations[$treatment] : $treatment;
+
+            echo $treatment;
+            break;
+
+        case 'ism_offers_date_arrival':
+
+            $dateArrival = get_post_meta($post_id, 'ism_offers_date_arrival', true);
+
+            $dateArrival = $dateArrival ? apply_filters("ism_offers_print_date", $dateArrival) : $dateArrival;
+
+            echo $dateArrival;
+            break;
+
+        case 'ism_offers_date_departure':
+
+            $dateDeparture = get_post_meta($post_id, 'ism_offers_date_departure', true);
+            $valid = ($dateDeparture >= strtotime("now"));
+            $color = ($valid ? "green" : "red");
+
+            printf("<span style='color: %s;'>%s</span>",
+                $color,
+                apply_filters("ism_offers_print_date", $dateDeparture)
+            );
+            break;
+
+        case 'ism_offers_categories':
+
+            $categories = array_map(function ($term){
+                return $term->name;
+            }, wp_get_post_terms($post_id, 'ism_offers_category'));
+
+            echo implode(", ", $categories);
+            break;
+
+        case 'ism_offers_thumbnail':
+
+            $thumbnailUrl = get_the_post_thumbnail_url($post_id, 'thumbnail');
+
+            printf("<img src='%s'/>", $thumbnailUrl);
+            break;
+    }
 }
