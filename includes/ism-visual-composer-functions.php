@@ -125,7 +125,7 @@ function ism_offers_vc_shortcode($shortcodes)
             ],
             [
                 'type'        => 'textfield',
-                'heading'     => 'Velocità in ms (1000ms = 1s)',
+                'heading'     => 'Velocità scorrimento in ms (1000ms = 1s)',
                 'param_name'  => 'carousel_speed',
                 'value'       => '',
                 'description' => ''
@@ -143,7 +143,7 @@ function ism_offers_vc_shortcode($shortcodes)
             ],
             [
                 'type'        => 'textfield',
-                'heading'     => 'Velocità in ms (1000ms = 1s)',
+                'heading'     => 'Velocità autplay in ms (1000ms = 1s)',
                 'param_name'  => 'carousel_autoplay_speed',
                 'value'       => '',
                 'description' => ''
