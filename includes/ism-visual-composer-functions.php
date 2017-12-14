@@ -74,7 +74,7 @@ function ism_offers_vc_shortcode($shortcodes)
                 'heading'     => 'Mese',
                 'param_name'  => 'month',
                 'value'       => [
-                    '-',
+                    '',
                     'Gennaio',
                     'Febbraio',
                     'Marzo',
