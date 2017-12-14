@@ -17,6 +17,7 @@ ism.initCarousels = function () {
         var columns = carousel.data("columns");
         var scroll_columns = carousel.data("scroll_columns");
         var autoplay = carousel.data("autoplay");
+        var speed = carousel.data("speed");
         var arrows = carousel.data("arrows");
         var dots = carousel.data("dots");
 
@@ -25,6 +26,7 @@ ism.initCarousels = function () {
             slidesToScroll: scroll_columns,
             arrows: arrows,
             dots: dots,
+            speed: speed,
             autoplay: autoplay,
             responsive: [
                 {

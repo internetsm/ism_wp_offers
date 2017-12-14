@@ -135,6 +135,13 @@ function ism_offers_vc_shortcode($shortcodes)
                 ]
             ],
             [
+                'type'        => 'textfield',
+                'heading'     => 'Velocità in ms (1000ms = 1s)',
+                'param_name'  => 'carousel_speed',
+                'value'       => '',
+                'description' => ''
+            ],
+            [
                 'type'        => 'checkbox',
                 'heading'     => 'Pallini carosello',
                 'param_name'  => 'carousel_dots',

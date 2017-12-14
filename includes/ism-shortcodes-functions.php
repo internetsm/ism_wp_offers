@@ -29,6 +29,7 @@ function ism_shortcode_offers($atts, $content = "")
         'carousel_columns'        => 3,
         'carousel_scroll_columns' => 1,
         'carousel_autoplay'       => true,
+        'carousel_speed'          => 3000,
         'carousel_dots'           => true,
         'carousel_arrows'         => true,
         'carousel_infinite'       => true,
@@ -198,6 +199,7 @@ function ism_shortcode_offers($atts, $content = "")
                 'scroll_columns' => $atts['carousel_scroll_columns'],
                 'dots'           => $atts['carousel_dots'],
                 'arrows'         => $atts['carousel_arrows'],
+                'speed'          => $atts['carousel_speed'],
                 'infinite'       => $atts['carousel_infinite'],
             ]
         ]);
