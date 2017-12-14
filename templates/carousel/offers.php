@@ -8,7 +8,7 @@
 
 ?>
 
-<ul class="slick-carousel" data-columns="<?php echo $carousel['columns']; ?>" data-scroll-columns="<?php echo $carousel['scroll_columns']; ?>" data-autoplay="<?php echo $carousel['autoplay']; ?>" data-arrows="<?php echo $carousel['arrows']; ?>" data-dots="<?php echo $carousel['dots']; ?>" data-speed="<?php echo $carousel['speed']; ?>">
+<ul class="slick-carousel" data-columns="<?php echo $carousel['columns']; ?>" data-scroll-columns="<?php echo $carousel['scroll_columns']; ?>" data-autoplay="<?php echo $carousel['autoplay']; ?>" data-arrows="<?php echo $carousel['arrows']; ?>" data-dots="<?php echo $carousel['dots']; ?>" data-speed="<?php echo $carousel['speed']; ?>" data-autoplay-speed="<?php echo $carousel['autoplay_speed']; ?>">
 <?php foreach ($offers as $offer){
     ?>
     <li class="offer columns-<?php echo $carousel['columns']; ?>">

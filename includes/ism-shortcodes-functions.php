@@ -30,6 +30,7 @@ function ism_shortcode_offers($atts, $content = "")
         'carousel_scroll_columns' => 1,
         'carousel_autoplay'       => true,
         'carousel_speed'          => 3000,
+        'carousel_autoplay_speed' => 3000,
         'carousel_dots'           => true,
         'carousel_arrows'         => true,
         'carousel_infinite'       => true,
@@ -200,6 +201,7 @@ function ism_shortcode_offers($atts, $content = "")
                 'dots'           => $atts['carousel_dots'],
                 'arrows'         => $atts['carousel_arrows'],
                 'speed'          => $atts['carousel_speed'],
+                'autoplay_speed' => $atts['carousel_autoplay_speed'],
                 'infinite'       => $atts['carousel_infinite'],
             ]
         ]);
