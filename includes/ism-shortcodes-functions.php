@@ -174,7 +174,7 @@ function ism_shortcode_offers($atts, $content = "")
 
         $offer = [
             'title'          => $post->post_title,
-            'description'    => $post->post_content,
+            'description'    => strip_tags($post->post_content, '<strong><b>'),
             'price'          => $price,
             'price_type'     => $priceType,
             'treatment'      => $treatment,
