@@ -6,6 +6,8 @@
  * Time: 15.38
  */
 
+use IsmOffers\Helper\OptionsHelper;
+
 add_action('init', 'ism_offers_custom_post_type_declaration');
 
 /**
@@ -40,9 +42,11 @@ function ism_offers_custom_post_type_declaration()
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => array('slug' => 'offer'),
+        'rewrite'            => [
+            'slug' => OptionsHelper::getPostTypeSlug()
+        ],
         'capability_type'    => 'post',
-        'has_archive'        => true,
+        'has_archive'        => OptionsHelper::hasPostTypeArchive(),
         'hierarchical'       => false,
         'menu_position'      => null,
         'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
