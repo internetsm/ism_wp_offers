@@ -14,13 +14,7 @@ add_action('admin_menu', function () {
             OptionsHelper::setPostTypeSlug($slug);
         }
 
-
-        $archive = isset($_POST['archive']) ? $_POST['archive'] : null;
-
-        if ($archive) {
-
-            OptionsHelper::setPostTypeArchive($archive);
-        }
+        OptionsHelper::setPostTypeArchive(isset($_GET['archive']));
 
         echo ism_offers_get_template('admin/settings', [
             'slug'    => OptionsHelper::getPostTypeSlug(),
