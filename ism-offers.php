@@ -11,10 +11,6 @@ License: MIT
 
 // https://code.jquery.com/ui/1.12.1/jquery-ui.min.js
 
-
-
-
-
 require_once "src/autoload.php";
 require_once "includes/ism-filters-functions.php";
 require_once "includes/ism-post-types-functions.php";
@@ -24,6 +20,7 @@ require_once "includes/ism-enqueue-functions.php";
 require_once "includes/ism-post-metaboxes-functions.php";
 require_once "includes/ism-columns-functions.php";
 require_once "includes/ism-visual-composer-functions.php";
+require_once "includes/ism-menu-pages-functions.php";
 
 if (!function_exists("ism_offers_get_template")) {
 

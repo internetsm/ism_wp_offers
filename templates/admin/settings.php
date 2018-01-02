@@ -1,7 +1,7 @@
 <div class="wrap">
     <h1>Impostazioni di lettura</h1>
 
-    <form method="post" action="options.php">
+    <form method="post" action="">
         <table class="form-table">
             <tbody>
             <tr>
