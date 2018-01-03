@@ -8,7 +8,7 @@
                 <th scope="row"><label for="slug">Slug</label></th>
                 <td>
                     <input name="slug" type="text" id="slug"
-                           class="text" value="<?php echo $slug; ?>"/>
+                           class="text" value="<?php _e($slug, 'ism-offer-dani'); ?>"/>
                 </td>
             </tr>
             <tr>

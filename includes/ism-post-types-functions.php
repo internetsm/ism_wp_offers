@@ -43,7 +43,7 @@ function ism_offers_custom_post_type_declaration()
         'show_in_menu'       => true,
         'query_var'          => true,
         'rewrite'            => [
-            'slug' => OptionsHelper::getPostTypeSlug()
+            'slug' => __(OptionsHelper::getPostTypeSlug(), 'ism-offer')
         ],
         'capability_type'    => 'post',
         'has_archive'        => OptionsHelper::hasPostTypeArchive(),
