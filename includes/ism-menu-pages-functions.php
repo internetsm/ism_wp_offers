@@ -16,6 +16,8 @@ add_action('admin_menu', function () {
 
         OptionsHelper::setPostTypeArchive(isset($_POST['archive']));
 
+        flush_rewrite_rules();
+
         echo ism_offers_get_template('admin/settings', [
             'slug'    => OptionsHelper::getPostTypeSlug(),
             'archive' => OptionsHelper::hasPostTypeArchive(),
