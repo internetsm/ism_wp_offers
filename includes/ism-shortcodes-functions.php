@@ -40,8 +40,9 @@ function ism_shortcode_offers($atts, $content = "")
 
     $queryArguments = [
         'posts_per_page' => $atts['limit'],
-//        'orderby'        => $atts['order_by'],
-//        'order'          => $atts['order'],
+        'meta_key'       => 'ism_offers_date_arrival',
+        'orderby'        => 'meta_value_num',
+        'order'          => 'ASC',
         'offset'         => $atts['offset'],
         'post_type'      => 'ism_offer',
 
@@ -53,8 +54,8 @@ function ism_shortcode_offers($atts, $content = "")
             'key'     => 'ism_offers_date_departure',
             'value'   => strtotime("now"),
             'compare' => '>=',
-            'type'    => 'NUMERIC'
-        ]
+            'type'    => 'NUMERIC',
+        ],
     ];
 
     if (!empty($atts['month'])) {
@@ -109,14 +110,14 @@ function ism_shortcode_offers($atts, $content = "")
                 'key'     => 'ism_offers_date_departure',
                 'value'   => $startDateTime->getTimestamp(),
                 'compare' => '>=',
-                'type'    => 'NUMERIC'
+                'type'    => 'NUMERIC',
             ],
             [
                 'key'     => 'ism_offers_date_arrival',
                 'value'   => $endDateTime->getTimestamp(),
                 'compare' => '<',
-                'type'    => 'NUMERIC'
-            ]
+                'type'    => 'NUMERIC',
+            ],
         ];
 
         $metaQuery[] = $tempMetaQuery;
@@ -131,7 +132,7 @@ function ism_shortcode_offers($atts, $content = "")
 
         if (!is_array($atts['category'])) {
             $atts['category'] = [
-                $atts['category']
+                $atts['category'],
             ];
         }
 
@@ -140,9 +141,9 @@ function ism_shortcode_offers($atts, $content = "")
                 'taxonomy' => 'ism_offers_category',
                 'field'    => is_int($categoryValue) ? 'id' : 'slug',
                 'terms'    => [
-                    $categoryValue
+                    $categoryValue,
                 ],
-                'operator' => 'IN'
+                'operator' => 'IN',
             ];
         }
         $queryArguments['tax_query'] = $taxQuery;
@@ -189,7 +190,7 @@ function ism_shortcode_offers($atts, $content = "")
 
     if (!$atts['is_carousel']) {
         return ism_offers_get_template('listing/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : ""), [
-            'offers' => $offers
+            'offers' => $offers,
         ]);
     } else {
         return ism_offers_get_template('carousel/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : ""), [
@@ -203,7 +204,7 @@ function ism_shortcode_offers($atts, $content = "")
                 'speed'          => $atts['carousel_speed'],
                 'autoplay_speed' => $atts['carousel_autoplay_speed'],
                 'infinite'       => $atts['carousel_infinite'],
-            ]
+            ],
         ]);
     }
 }
