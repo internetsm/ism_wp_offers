@@ -139,7 +139,7 @@ function ism_shortcode_offers($atts, $content = "")
         foreach ($atts['category'] as $categoryValue) {
             $taxQuery[] = [
                 'taxonomy' => 'ism_offers_category',
-                'field'    => is_int($categoryValue) ? 'id' : 'slug',
+                'field'    => is_numeric($categoryValue) ? 'id' : 'slug',
                 'terms'    => [
                     $categoryValue,
                 ],
