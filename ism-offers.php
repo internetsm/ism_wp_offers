@@ -46,7 +46,7 @@ if (!function_exists("ism_offers_get_template")) {
             }
         }
         if (!$templatePathSelected) {
-            throw new Exception("ism_offers template not found");
+            throw new \Exception("ism_offers exception - Neither of these templates could be found: " . implode(", ", $templatePaths));
         }
         ob_start();
         extract($args);

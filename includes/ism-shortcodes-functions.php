@@ -188,23 +188,29 @@ function ism_shortcode_offers($atts, $content = "")
         $offers[] = $offer;
     }
 
-    if (!$atts['is_carousel']) {
-        return ism_offers_get_template('listing/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : ""), [
-            'offers' => $offers,
-        ]);
-    } else {
-        return ism_offers_get_template('carousel/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : ""), [
-            'offers'   => $offers,
-            'carousel' => [
-                'autoplay'       => $atts['carousel_autoplay'],
-                'columns'        => $atts['carousel_columns'],
-                'scroll_columns' => $atts['carousel_scroll_columns'],
-                'dots'           => $atts['carousel_dots'],
-                'arrows'         => $atts['carousel_arrows'],
-                'speed'          => $atts['carousel_speed'],
-                'autoplay_speed' => $atts['carousel_autoplay_speed'],
-                'infinite'       => $atts['carousel_infinite'],
-            ],
-        ]);
+    $templateName = $atts['is_carousel'] ? 'carousel/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : "") : 'listing/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : "");
+    $templateAttrs = [
+        'offers' => $offers,
+    ];
+
+    if ($atts['is_carousel']) {
+        $templateAttrs['carousel'] = [
+            'autoplay'       => $atts['carousel_autoplay'],
+            'columns'        => $atts['carousel_columns'],
+            'scroll_columns' => $atts['carousel_scroll_columns'],
+            'dots'           => $atts['carousel_dots'],
+            'arrows'         => $atts['carousel_arrows'],
+            'speed'          => $atts['carousel_speed'],
+            'autoplay_speed' => $atts['carousel_autoplay_speed'],
+            'infinite'       => $atts['carousel_infinite'],
+        ];
+    }
+
+    try {
+        $template = ism_offers_get_template($templateName, $templateAttrs);
+
+        return $template;
+    } catch (\Exception $exception) {
+        return $exception->getMessage();
     }
 }
