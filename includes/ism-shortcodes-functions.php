@@ -90,7 +90,7 @@ function ism_shortcode_offers($atts, $content = "")
         $year = $month < $currentMonth ? $nextYear : $currentYear;
 
         $dateString = sprintf('%s-%s-%s %s:%s:%s',
-            '00',
+            '01',
             strlen($month) > 1 ? $month : '0' . $month,
             $year,
             '00',
@@ -105,7 +105,6 @@ function ism_shortcode_offers($atts, $content = "")
         $endDateTime->modify('+1 month');
 
         $tempMetaQuery = [
-            'OR',
             [
                 'key'     => 'ism_offers_date_departure',
                 'value'   => $startDateTime->getTimestamp(),
@@ -120,7 +119,7 @@ function ism_shortcode_offers($atts, $content = "")
             ],
         ];
 
-        $metaQuery[] = $tempMetaQuery;
+        $metaQuery = array_merge($metaQuery, $tempMetaQuery);
 
     }
 
