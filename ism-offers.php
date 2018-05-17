@@ -11,46 +11,21 @@ License: MIT
 
 // https://code.jquery.com/ui/1.12.1/jquery-ui.min.js
 
+define("ISMO_ROOT_DIR", __DIR__);
+define("ISMO_ROOT_FILE", __FILE__);
+define("ISMO_ROOT_URL", plugin_dir_url(ISMO_ROOT_FILE));
+define("ISMO_TEMPLATE_DIR", ISMO_ROOT_DIR . DIRECTORY_SEPARATOR . "templates");
+define("ISMO_ASSETS_URL", ISMO_ROOT_URL . "/" . "assets");
+
 require_once "src/autoload.php";
-require_once "includes/ism-assets-functions.php";
-require_once "includes/ism-filters-functions.php";
-require_once "includes/ism-post-types-functions.php";
-require_once "includes/ism-taxonomies-functions.php";
-require_once "includes/ism-shortcodes-functions.php";
-require_once "includes/ism-enqueue-functions.php";
-require_once "includes/ism-post-metaboxes-functions.php";
-require_once "includes/ism-columns-functions.php";
-require_once "includes/ism-visual-composer-functions.php";
-require_once "includes/ism-menu-pages-functions.php";
-
-if (!function_exists("ism_offers_get_template")) {
-
-    /**
-     * Get template
-     *
-     * @param $slug
-     * @param $args
-     * @return string
-     * @throws Exception
-     */
-    function ism_offers_get_template($slug, $args = [])
-    {
-        $templatePathSelected = null;
-        $templatePaths = [
-            __DIR__ . "/templates/{$slug}.php",
-            get_stylesheet_directory() . "/ism_offers/{$slug}.php",
-        ];
-        foreach ($templatePaths as $templatePath) {
-            if (file_exists($templatePath)) {
-                $templatePathSelected = $templatePath;
-            }
-        }
-        if (!$templatePathSelected) {
-            throw new \Exception("ism_offers exception - Neither of these templates could be found: " . implode(", ", $templatePaths));
-        }
-        ob_start();
-        extract($args);
-        include $templatePathSelected;
-        return ob_get_clean();
-    }
-}
+require_once "includes/template-functions.php";
+require_once "includes/assets-functions.php";
+require_once "includes/filters-functions.php";
+require_once "includes/post-types-functions.php";
+require_once "includes/taxonomies-functions.php";
+require_once "includes/shortcodes-functions.php";
+require_once "includes/enqueue-functions.php";
+require_once "includes/post-metaboxes-functions.php";
+require_once "includes/columns-functions.php";
+require_once "includes/visual-composer-functions.php";
+require_once "includes/menu-pages-functions.php";
