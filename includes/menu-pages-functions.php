@@ -2,7 +2,7 @@
 
 use IsmOffers\Entity\IsmOffer;
 use IsmOffers\Helper\OptionsHelper;
-
+/*
 add_action('admin_menu', function () {
 
     add_submenu_page('edit.php?post_type=' . IsmOffer::POST_TYPE, __('Impostazioni', 'ism-offers-menu'), __('Impostazioni', 'ism-offers-menu'), 'manage_options', 'ism_offers_settings_menu', function () {
@@ -24,3 +24,4 @@ add_action('admin_menu', function () {
         ]);
     });
 });
+*/

@@ -42,14 +42,15 @@ function ism_offers_custom_post_type_declaration()
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => [
-            'slug' => OptionsHelper::getPostTypeSlug(), 'ism-offer-dani'
-        ],
+        'rewrite'            => array('slug' => __('offers', 'ism-offers')),
         'capability_type'    => 'post',
-        'has_archive'        => OptionsHelper::hasPostTypeArchive(),
+        'has_archive'        => false,
         'hierarchical'       => false,
         'menu_position'      => null,
         'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
     );
+
+    $args = apply_filters('ism_offers_post_type_options', $args);
+
     register_post_type('ism_offer', $args);
 }
