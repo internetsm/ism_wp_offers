@@ -42,7 +42,7 @@ function ism_offers_custom_post_type_declaration()
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => array('slug' => __('offers', 'ism-offers')),
+        'rewrite'            => array('slug' => "offerte"),
         'capability_type'    => 'post',
         'has_archive'        => false,
         'hierarchical'       => false,
