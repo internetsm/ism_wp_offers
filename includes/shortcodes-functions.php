@@ -173,8 +173,10 @@ function ism_shortcode_offers($atts, $content = "")
         $image = get_the_post_thumbnail_url($post->ID, $atts['thumbnail_size']);
 
         $offer = [
+            'ID'             => $post->ID,
             'title'          => $post->post_title,
             'description'    => strip_tags($post->post_content, '<strong><b>'),
+            'excerpt'        => get_the_excerpt($post->ID),
             'price'          => $price,
             'price_type'     => $priceType,
             'treatment'      => $treatment,
