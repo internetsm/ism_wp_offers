@@ -189,22 +189,28 @@ function ism_shortcode_offers($atts, $content = "")
         $offers[] = $offer;
     }
 
-    $templateName = $atts['is_carousel'] ? 'carousel/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : "") : 'listing/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : "");
-    $templateAttrs = [
-        'offers' => $offers,
-    ];
+    $templateAttrs = [];
 
-    if ($atts['is_carousel']) {
-        $templateAttrs['carousel'] = [
-            'autoplay'       => $atts['carousel_autoplay'],
-            'columns'        => $atts['carousel_columns'],
-            'scroll_columns' => $atts['carousel_scroll_columns'],
-            'dots'           => $atts['carousel_dots'],
-            'arrows'         => $atts['carousel_arrows'],
-            'speed'          => $atts['carousel_speed'],
-            'autoplay_speed' => $atts['carousel_autoplay_speed'],
-            'infinite'       => $atts['carousel_infinite'],
+    if (count($offers)) {
+        $templateName = $atts['is_carousel'] ? 'carousel/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : "") : 'listing/offers' . (!empty($atts['theme']) ? "-" . $atts['theme'] : "");
+        $templateAttrs = [
+            'offers' => $offers,
         ];
+
+        if ($atts['is_carousel']) {
+            $templateAttrs['carousel'] = [
+                'autoplay'       => $atts['carousel_autoplay'],
+                'columns'        => $atts['carousel_columns'],
+                'scroll_columns' => $atts['carousel_scroll_columns'],
+                'dots'           => $atts['carousel_dots'],
+                'arrows'         => $atts['carousel_arrows'],
+                'speed'          => $atts['carousel_speed'],
+                'autoplay_speed' => $atts['carousel_autoplay_speed'],
+                'infinite'       => $atts['carousel_infinite'],
+            ];
+        }
+    } else {
+        $templateName = "no-offers";
     }
 
     try {
