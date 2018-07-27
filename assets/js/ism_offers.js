@@ -1,6 +1,6 @@
 var ism = window.ism || {};
 
-ism.initDatepickers = function () {
+ism.initOffersDatepickers = function () {
 
     jQuery("#datepicker-arrival").datepicker({
         dateFormat: 'dd-mm-yy',
@@ -11,10 +11,12 @@ ism.initDatepickers = function () {
     });
 };
 
-ism.initCarousels = function () {
+ism.initOffersCarousels = function () {
     jQuery(".slick-carousel").each(function () {
         var carousel = jQuery(this);
         var columns = carousel.data("columns");
+        var columnsTablet = carousel.data("columns-tablet");
+        var columnsMobile = carousel.data("columns-mobile");
         var scroll_columns = carousel.data("scroll_columns");
         var autoplay = carousel.data("autoplay");
         var autoplay_speed = carousel.data("autoplay-speed");
@@ -34,14 +36,14 @@ ism.initCarousels = function () {
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: columnsTablet,
                         slidesToScroll: 1,
                     }
                 },
                 {
                     breakpoint: 480,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: columnsMobile,
                         slidesToScroll: 1
                     }
                 }
@@ -52,6 +54,6 @@ ism.initCarousels = function () {
 };
 
 jQuery(function () {
-    ism.initDatepickers();
-    ism.initCarousels();
+    ism.initOffersDatepickers();
+    ism.initOffersCarousels();
 });

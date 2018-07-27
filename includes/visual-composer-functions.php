@@ -30,44 +30,44 @@ function ism_offers_vc_shortcode($shortcodes)
                 'heading'     => 'Tema',
                 'param_name'  => 'theme',
                 'value'       => 0,
-                'description' => 'Tema del template (il nome del template avrà il suffisso "-nome_tema"'
+                'description' => 'Tema del template (il nome del template avrà il suffisso "-nome_tema"',
             ],
             [
                 'type'        => 'textfield',
                 'heading'     => 'Offset',
                 'param_name'  => 'offset',
                 'value'       => 0,
-                'description' => 'Numero di offerte da skippare'
+                'description' => 'Numero di offerte da skippare',
             ],
             [
                 'type'        => 'textfield',
                 'heading'     => 'Numero massimo risultati',
                 'param_name'  => 'limit',
                 'value'       => -1,
-                'description' => 'Numero massimo di risultati (-1 per "nessun limite")'
+                'description' => 'Numero massimo di risultati (-1 per "nessun limite")',
             ],
             [
                 'type'        => 'textfield',
                 'heading'     => 'Dimensione thumbnail immagine',
                 'param_name'  => 'thumbnail_size',
                 'value'       => 'thumbnail',
-                'description' => 'Dimensione thumbnail (thumbnail, medium, large, full, ecc.)'
+                'description' => 'Dimensione thumbnail (thumbnail, medium, large, full, ecc.)',
             ],
             [
                 'type'        => 'textfield',
                 'heading'     => 'Categoria/e',
                 'param_name'  => 'category',
                 'value'       => '',
-                'description' => ''
+                'description' => '',
             ],
             [
                 'type'        => 'dropdown',
                 'heading'     => 'Categoria relation query',
                 'param_name'  => 'category_relation',
                 'value'       => [
-                    'AND', 'OR'
+                    'AND', 'OR',
                 ],
-                'description' => ''
+                'description' => '',
             ],
             [
                 'type'        => 'dropdown',
@@ -88,47 +88,73 @@ function ism_offers_vc_shortcode($shortcodes)
                     'Novembre',
                     'Dicembre',
                 ],
-                'description' => ''
+                'description' => '',
             ],
             [
                 'type'        => 'checkbox',
                 'heading'     => 'Carosello',
                 'param_name'  => 'is_carousel',
                 'value'       => 1,
-                'description' => 'Carosello o listing normale'
+                'description' => 'Carosello o listing normale',
             ],
             [
                 'type'        => 'dropdown',
                 'heading'     => 'Numero colonne carosello',
                 'param_name'  => 'carousel_columns',
                 'value'       => [
-                    1, 2, 3, 4
+                    1, 2, 3, 4,
                 ],
                 'description' => '',
                 'dependency'  => [
                     'element'   => 'is_carousel',
                     'not_empty' => true,
-                ]
+                ],
+            ],
+            [
+                'type'        => 'dropdown',
+                'heading'     => 'Numero colonne carosello Tablet',
+                'param_name'  => 'carousel_columns_tablet',
+                'value'       => [
+                    1, 2, 3, 4,
+                ],
+                'description' => '',
+                'dependency'  => [
+                    'element'   => 'is_carousel',
+                    'not_empty' => true,
+                ],
+            ],
+            [
+                'type'        => 'dropdown',
+                'heading'     => 'Numero colonne carosello Mobile',
+                'param_name'  => 'carousel_columns_mobile',
+                'value'       => [
+                    1, 2, 3, 4,
+                ],
+                'description' => '',
+                'dependency'  => [
+                    'element'   => 'is_carousel',
+                    'not_empty' => true,
+                ],
             ],
             [
                 'type'        => 'dropdown',
                 'heading'     => 'Scroll colonne carosello',
                 'param_name'  => 'carousel_scroll_columns',
                 'value'       => [
-                    1, 2, 3, 4
+                    1, 2, 3, 4,
                 ],
                 'description' => '',
                 'dependency'  => [
                     'element'   => 'is_carousel',
                     'not_empty' => true,
-                ]
+                ],
             ],
             [
                 'type'        => 'textfield',
                 'heading'     => 'Velocità scorrimento in ms (1000ms = 1s)',
                 'param_name'  => 'carousel_speed',
                 'value'       => '',
-                'description' => ''
+                'description' => '',
             ],
             [
                 'type'        => 'checkbox',
@@ -139,14 +165,14 @@ function ism_offers_vc_shortcode($shortcodes)
                 'dependency'  => [
                     'element'   => 'is_carousel',
                     'not_empty' => true,
-                ]
+                ],
             ],
             [
                 'type'        => 'textfield',
                 'heading'     => 'Velocità autoplay in ms (1000ms = 1s)',
                 'param_name'  => 'carousel_autoplay_speed',
                 'value'       => '',
-                'description' => ''
+                'description' => '',
             ],
             [
                 'type'        => 'checkbox',
@@ -157,7 +183,7 @@ function ism_offers_vc_shortcode($shortcodes)
                 'dependency'  => [
                     'element'   => 'is_carousel',
                     'not_empty' => true,
-                ]
+                ],
             ],
             [
                 'type'        => 'checkbox',
@@ -168,9 +194,9 @@ function ism_offers_vc_shortcode($shortcodes)
                 'dependency'  => [
                     'element'   => 'is_carousel',
                     'not_empty' => true,
-                ]
+                ],
             ],
-        ]
+        ],
     ]);
     return $shortcodes;
 }
